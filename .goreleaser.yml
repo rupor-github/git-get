@@ -51,21 +51,21 @@ release:
     owner: rupor-github
     name: git-get
 
-brews:
-  - name: git-get
-    repository:
-      owner: grdl
-      name: homebrew-tap
-    commit_author:
-      name: Grzegorz Dlugoszewski
-      email: git-get@grdl.dev
-    directory: Formula
-    homepage: https://github.com/grdl/git-get/
-    description: Better way to clone, organize and manage multiple git repositories
-    test: |
-      system "git-get --version"
-    install: |
-      bin.install "git-get", "git-list"
+# brews:
+#   - name: git-get
+#     repository:
+#       owner: grdl
+#       name: homebrew-tap
+#     commit_author:
+#       name: Grzegorz Dlugoszewski
+#       email: git-get@grdl.dev
+#     directory: Formula
+#     homepage: https://github.com/grdl/git-get/
+#     description: Better way to clone, organize and manage multiple git repositories
+#     test: |
+#       system "git-get --version"
+#     install: |
+#       bin.install "git-get", "git-list"
 
 nfpms:
   - license: MIT
