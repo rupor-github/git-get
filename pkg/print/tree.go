@@ -151,6 +151,14 @@ func printLeaf(node *Node) string {
 		str.WriteString(fmt.Sprintf("%s %s %s", node.val, blue(r.Current()), strings.Join([]string{yellow(current), red(worktree)}, " ")))
 	}
 
+	if description := r.BranchDescription(r.Current()); len(description) > 0 {
+		for _, line := range description {
+			if len(line) > 0 {
+				str.WriteString(fmt.Sprintf("\n%s┈ %s", indentation(node), magenta(line)))
+			}
+		}
+	}
+
 	for _, branch := range r.Branches() {
 		status := r.BranchStatus(branch)
 		if status == "" {
@@ -158,6 +166,14 @@ func printLeaf(node *Node) string {
 		}
 
 		str.WriteString(fmt.Sprintf("\n%s%s %s", indentation(node), blue(branch), yellow(status)))
+
+		if description := r.BranchDescription(branch); len(description) > 0 {
+			for _, line := range description {
+				if len(line) > 0 {
+					str.WriteString(fmt.Sprintf("\n%s┈ %s", indentation(node), magenta(line)))
+				}
+			}
+		}
 	}
 
 	return str.String()
@@ -177,23 +193,8 @@ func indentation(node *Node) string {
 		levels[n.depth-1] = n.isYoungest()
 		n = n.parent
 	}
-
-	var indent strings.Builder
-
-	const space = "    "
-	const link = "│   "
-	for _, y := range levels {
-		if y {
-			indent.WriteString(space)
-		} else {
-			indent.WriteString(link)
-		}
-	}
-
-	// Finally, indent by the size of node name (to match the rest of the branches)
-	indent.WriteString(strings.Repeat(" ", len(node.val)+1))
-
-	return indent.String()
+	// Indent by the size of node name (to match the rest of the branches)
+	return strings.Repeat(" ", len(node.val)+1)
 }
 
 // isYoungest checks if the node is the last one in the slice of children

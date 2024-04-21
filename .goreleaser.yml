@@ -33,12 +33,6 @@ archives:
     builds:
       - git-get
       - git-list
-    replacements:
-      darwin: macOS
-      linux: linux
-      windows: windows
-      386: i386
-      amd64: x86_64
     format_overrides:
       - goos: windows
         format: zip
@@ -67,7 +61,7 @@ brews:
       name: Grzegorz Dlugoszewski
       email: git-get@grdl.dev
     folder: Formula
-    homepage: https://github.com/grdl/git-get/
+    homepage: https://github.com/rupor-github/git-get/
     description: Better way to clone, organize and manage multiple git repositories
     test: |
       system "git-get --version"
@@ -77,7 +71,7 @@ brews:
 nfpms:
   - license: MIT
     maintainer: grdl
-    homepage: https://github.com/grdl/git-get
+    homepage: https://github.com/rupor-github/git-get
     bindir: /usr/local/bin
     dependencies:
       - git
