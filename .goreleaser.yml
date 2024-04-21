@@ -48,20 +48,19 @@ changelog:
 
 release:
   github:
-    owner: grdl
+    owner: rupor-github
     name: git-get
-
 
 brews:
   - name: git-get
-    tap:
+    repository:
       owner: grdl
       name: homebrew-tap
     commit_author:
       name: Grzegorz Dlugoszewski
       email: git-get@grdl.dev
-    folder: Formula
-    homepage: https://github.com/rupor-github/git-get/
+    directory: Formula
+    homepage: https://github.com/grdl/git-get/
     description: Better way to clone, organize and manage multiple git repositories
     test: |
       system "git-get --version"
@@ -71,7 +70,7 @@ brews:
 nfpms:
   - license: MIT
     maintainer: grdl
-    homepage: https://github.com/rupor-github/git-get
+    homepage: https://github.com/grdl/git-get
     bindir: /usr/local/bin
     dependencies:
       - git
